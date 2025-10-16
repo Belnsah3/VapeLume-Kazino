@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VapeLume Kazino</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- UI будет рендериться здесь -->
+    <div id="main-screen" class="screen active">
+      <div class="header">
+        <div class="logo-container">
+          <div class="logo">
+            <img src="../logo.jpg" alt="VapeLume Logo" class="logo-img">
+          </div>
+          <h1 class="app-title">VapeLume Kazino</h1>
+        </div>
+        <div class="balance-container">
+          <div class="balance">💰 Ваш баланс: <span id="balance-amount">0</span> LumeCoin</div>
+        </div>
+      </div>
+      
+      <div class="main-menu">
+        <button class="menu-btn" id="play-btn">
+          <span class="btn-icon">🎮</span>
+          Играть
+        </button>
+        <button class="menu-btn" id="profile-btn">
+          <span class="btn-icon">🏆</span>
+          Профиль
+        </button>
+        <button class="menu-btn" id="referrals-btn">
+          <span class="btn-icon">🔗</span>
+          Рефералы
+        </button>
+        <button class="menu-btn" id="titles-btn">
+          <span class="btn-icon">🏷️</span>
+          Титулы
+        </button>
+        <button class="menu-btn" id="bonuses-btn">
+          <span class="btn-icon">🎁</span>
+          Бонусы
+        </button>
+      </div>
+    </div>
+    
+    <div id="play-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" id="back-to-main-from-play">← Назад</button>
+        <h2>Меню Игр</h2>
+      </div>
+      
+      <div class="games-list">
+        <div class="game-item">
+          <div class="game-info">
+            <h3>Рулетка</h3>
+            <p>Ставка ≥ 25 LumeCoin, 30% шанс</p>
+          </div>
+          <button class="game-btn" data-game="roulette">Играть</button>
+        </div>
+        
+        <div class="game-item">
+          <div class="game-info">
+            <h3>Кости</h3>
+            <p>25 LumeCoin, 40% шанс</p>
+          </div>
+          <button class="game-btn" data-game="play">Играть</button>
+        </div>
+        
+        <div class="game-item">
+          <div class="game-info">
+            <h3>Русская рулетка</h3>
+            <p>Бесплатно, 35% шанс</p>
+          </div>
+          <button class="game-btn" data-game="russian">Играть</button>
+        </div>
+        
+        <div class="game-item">
+          <div class="game-info">
+            <h3>Еврейская рулетка</h3>
+            <p>Бесплатно, 50% шанс</p>
+          </div>
+          <button class="game-btn" data-game="jewish">Играть</button>
+        </div>
+        
+        <div class="game-item">
+          <div class="game-info">
+            <h3>Кубик</h3>
+            <p>Ставка 10–100 LumeCoin</p>
+          </div>
+          <button class="game-btn" data-game="dice">Играть</button>
+        </div>
+        
+        <div class="game-item">
+          <div class="game-info">
+            <h3>Слоты</h3>
+            <p>50 LumeCoin</p>
+          </div>
+          <button class="game-btn" data-game="slots">Играть</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="profile-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" id="back-to-main-from-profile">← Назад</button>
+        <h2>Профиль</h2>
+      </div>
+      
+      <div class="profile-content">
+        <div class="profile-top">
+          <div class="avatar-container">
+            <img src="../logo.jpg" alt="Avatar" class="avatar">
+          </div>
+          <div class="user-info">
+            <h3 id="user-name">Имя пользователя</h3>
+            <div class="level-rank">🏆 Уровень <span id="user-level">1</span> — <span id="user-rank">Новичок</span></div>
+          </div>
+        </div>
+        
+        <div class="xp-container">
+          <div class="xp-info">
+            <span>XP: <span id="user-xp">0</span>/<span id="xp-needed">100</span></span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress" id="xp-progress" style="width: 0%"></div>
+          </div>
+        </div>
+        
+        <div class="balance-large">💰 <span id="profile-balance">0</span> LumeCoin</div>
+        
+        <div class="achievements-container">
+          <h3>Достижения</h3>
+          <div class="achievements-list" id="achievements-list">
+            <!-- Достижения будут добавлены здесь -->
+          </div>
+        </div>
+        
+        <button class="refresh-btn" id="refresh-profile">Обновить</button>
+      </div>
+    </div>
+    
+    <div id="referrals-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" id="back-to-main-from-referrals">← Назад</button>
+        <h2>Рефералы</h2>
+      </div>
+      
+      <div class="referrals-content">
+        <div class="referral-link-container">
+          <label>Ваша ссылка:</label>
+          <div class="referral-link-box">
+            <span id="referral-link">Загрузка...</span>
+            <button class="copy-btn" id="copy-referral-link">Копировать</button>
+            </div>
+          </div>
+         
+        <div class="referral-stats">
+          <div class="stat-item">
+            <span>Вы пригласили:</span>
+            <span id="referral-count">0</span> пользователей
+          </div>
+        </div>
+        
+        <button class="share-btn" id="share-referral">Поделиться</button>
+      </div>
+    
+    <div id="titles-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" id="back-to-main-from-titles">← Назад</button>
+        <h2>Титулы</h2>
+      </div>
+      
+      <div class="titles-content">
+        <div class="titles-section">
+          <h3>Пожизненные титулы</h3>
+          <div class="title-item" data-title="Босс" data-price="50000" data-type="permanent">
+            <div class="title-info">
+              <span class="title-name">Босс</span>
+              <span class="title-price">50000 LumeCoin</span>
+            </div>
+            <button class="buy-btn">Купить</button>
+          </div>
+          
+          <div class="title-item" data-title="Король" data-price="25000" data-type="permanent">
+            <div class="title-info">
+              <span class="title-name">Король</span>
+              <span class="title-price">25000 LumeCoin</span>
+            </div>
+            <button class="buy-btn">Купить</button>
+          </div>
+          
+          <!-- Другие пожизненные титулы будут добавлены здесь -->
+        </div>
+        
+        <div class="titles-section">
+          <h3>Временные титулы</h3>
+          <div class="title-item" data-title="Титул на 1 день" data-price="1000" data-type="temporary">
+            <div class="title-info">
+              <span class="title-name">Титул на 1 день</span>
+              <span class="title-price">1000 LumeCoin</span>
+            </div>
+            <button class="rent-btn">Арендовать</button>
+          </div>
+          
+          <div class="title-item" data-title="Титул на 7 дней" data-price="5000" data-type="temporary">
+            <div class="title-info">
+              <span class="title-name">Титул на 7 дней</span>
+              <span class="title-price">5000 LumeCoin</span>
+            </div>
+            <button class="rent-btn">Арендовать</button>
+          </div>
+          
+          <!-- Другие временные титулы будут добавлены здесь -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="bonuses-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" id="back-to-main-from-bonuses">← Назад</button>
+        <h2>Бонусы</h2>
+      </div>
+      
+      <div class="bonuses-content">
+        <div class="bonus-item">
+          <h3>Открыть кейс</h3>
+          <p>Получите случайный приз!</p>
+          <button class="bonus-btn" id="open-case-btn">Открыть кейс</button>
+        </div>
+        
+        <div class="bonus-item">
+          <h3>Сжечь монеты</h3>
+          <p>Конвертируйте монеты в XP (1:2)</p>
+          <div class="burn-input-container">
+            <input type="number" id="burn-amount" placeholder="Введите сумму" min="1">
+            <button class="burn-btn" id="burn-coins-btn">Сжечь</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="game-screen" class="screen">
+      <div class="screen-header">
+        <button class="back-btn" id="back-to-play">← Назад</button>
+        <h2 id="game-title">Игра</h2>
+      </div>
+      
+      <div class="game-content">
+        <div class="bet-input-container">
+          <input type="number" id="bet-amount" placeholder="Введите ставку" min="1">
+          <button class="play-game-btn" id="play-game-btn">Сделать ставку</button>
+        </div>
+        <div class="game-result" id="game-result"></div>
+      </div>
+    </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+/* Основные стили для VapeLume Kazino Mini App */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e2a4d 0%, #2b3a67 50%, #4a2c8f 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Экраны */
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Заголовок приложения */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8a54f8, #ff57a0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: pulse 2s infinite;
+}
+
+.logo-img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.app-title {
+  font-size: 24px;
+ font-weight: bold;
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ background-clip: text;
+}
+
+.balance-container {
+  background: rgba(30, 42, 77, 0.6);
+  padding: 15px;
+  border-radius: 15px;
+ box-shadow: 0 4px 20px rgba(0, 0, 0.4);
+  margin: 0 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.balance {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Главное меню */
+.main-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.menu-btn {
+ background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 50%, #ff57a0 100%);
+  border: none;
+  border-radius: 15px;
+ color: white;
+ padding: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(25, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.menu-btn:hover::before {
+  left: 100%;
+}
+
+.menu-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0.5);
+}
+
+.menu-btn:active {
+  transform: translateY(1px);
+}
+
+.btn-icon {
+ font-size: 24px;
+}
+
+/* Заголовки экранов */
+.screen-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.screen-header h2 {
+  font-size: 24px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.back-btn {
+  background: rgba(74, 74, 90, 0.7);
+  border: none;
+  border-radius: 10px;
+  color: white;
+ padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Список игр */
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.game-item {
+  background: rgba(30, 42, 77, 0.6);
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+ justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.game-item:hover {
+  transform: translateX(5px);
+}
+
+.game-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.game-info p {
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+.game-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+ padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+ transition: all 0.2s;
+}
+
+.game-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Профиль */
+.profile-content {
+  display: flex;
+ flex-direction: column;
+  gap: 20px;
+}
+
+.profile-top {
+  display: flex;
+ align-items: center;
+  gap: 15px;
+  background: rgba(30, 42, 77, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+ box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.avatar-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0.4);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-info h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.level-rank {
+  color: #b0b0b0;
+  font-size: 16px;
+}
+
+.xp-container {
+  background: rgba(30, 42, 77, 0.6);
+  padding: 15px;
+  border-radius: 15px;
+ box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.xp-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 20px;
+  background: #4a4a5a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border-radius: 10px;
+ transition: width 0.3s;
+}
+
+.balance-large {
+  font-size: 20px;
+  text-align: center;
+  background: rgba(30, 42, 77, 0.6);
+  padding: 15px;
+  border-radius: 15px;
+ box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.achievements-container {
+  background: rgba(30, 42, 77, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.achievements-container h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.achievements-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.achievement-item {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #4a5a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.refresh-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border: none;
+ border-radius: 15px;
+ color: white;
+ padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+ transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  transform: scale(1.02);
+}
+
+/* Рефералы */
+.referrals-content {
+ display: flex;
+ flex-direction: column;
+  gap: 20px;
+}
+
+.referral-link-container {
+  background: rgba(30, 42, 77, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.referral-link-container label {
+  display: block;
+ margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.referral-link-box {
+  display: flex;
+  gap: 10px;
+}
+
+#referral-link {
+  flex-grow: 1;
+  background: rgba(26, 31, 46, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+ padding: 10px 15px;
+  cursor: pointer;
+}
+
+.referral-stats {
+  background: rgba(30, 42, 77, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+ box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.share-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border: none;
+  border-radius: 15px;
+ color: white;
+ padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.share-btn:hover {
+  transform: scale(1.02);
+}
+
+/* Титулы */
+.titles-content {
+  display: flex;
+ flex-direction: column;
+  gap: 20px;
+}
+
+.titles-section {
+  background: rgba(30, 42, 77, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+ box-shadow: 0 4px 20px rgba(0, 0, 0.4);
+}
+
+.titles-section h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.title-item {
+ display: flex;
+ justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: rgba(26, 31, 46, 0.8);
+  transition: transform 0.2s;
+}
+
+.title-item:hover {
+  transform: translateX(5px);
+}
+
+.title-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.title-price {
+  color: #b0b0b0;
+}
+
+.buy-btn, .rent-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+ padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.buy-btn:hover, .rent-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Бонусы */
+.bonuses-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bonus-item {
+ background: rgba(30, 42, 77, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bonus-item h3 {
+  font-size: 18px;
+}
+
+.bonus-item p {
+  color: #b0b0b0;
+}
+
+.burn-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+#burn-amount {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+ background: rgba(26, 31, 46, 0.8);
+  color: white;
+}
+
+.bonus-btn, .burn-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bonus-btn:hover, .burn-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Игровой экран */
+.game-content {
+  display: flex;
+ flex-direction: column;
+  gap: 20px;
+}
+
+.bet-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+#bet-amount {
+  flex-grow: 1;
+  padding: 15px;
+  border-radius: 10px;
+ border: none;
+ background: rgba(26, 31, 46, 0.8);
+  color: white;
+ font-size: 16px;
+}
+
+.play-game-btn {
+  background: linear-gradient(90deg, #4b6cb7 0%, #8a54f8 10%);
+  border: none;
+ border-radius: 10px;
+  color: white;
+ padding: 15px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.play-game-btn:hover {
+ transform: scale(1.05);
+}
+
+.game-result {
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+ background: rgba(30, 42, 77, 0.6);
+  font-size: 18px;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .main-menu {
+    grid-template-columns: 1fr;
+  }
+  
+  .game-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .referral-link-box {
+    flex-direction: column;
+ }
+  
+  .title-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+ }
+  
+  .bet-input-container {
+    flex-direction: column;
+  }
+  
+  .burn-input-container {
+    flex-direction: column;
+  }
+}
+
+/* Анимации */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+ 100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+ }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимация спиннера для загрузки */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(25, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #8a54f8;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+ }
+}
+
+/* Анимация для уведомлений */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #4b6cb7, #8a54f8);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0.3);
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+ background: linear-gradient(90deg, #2ecc71, #3498db);
+}
+
+.notification.error {
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
