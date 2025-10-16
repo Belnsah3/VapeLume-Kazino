@@ -1,0 +1,19 @@
+[Unit]
+Description=VapeLume Kazino Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=botuser
+WorkingDirectory=/home/botuser/vapelume-kazino
+ExecStart=/usr/bin/python3 /home/botuser/vapelume-kazino/main.py
+Restart=always
+RestartSec=10
+Environment=PYTHONPATH=/home/botuser/vapelume-kazino
+
+# Логирование
+StandardOutput=append:/home/botuser/vapelume-kazino/bot.log
+StandardError=append:/home/botuser/vapelume-kazino/bot.log
+
+[Install]
+WantedBy=multi-user.target
